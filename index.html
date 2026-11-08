@@ -258,6 +258,7 @@
 
 const API_BASE = 'https://www.googleapis.com/youtube/v3';
 const DEFAULT_PLAYLIST = 'PLF4sfoMSIp_4';
+const DEFAULT_API_KEY = 'AIzaSyCNVs-4ZU0fJeViUU_mFH7mKJiVGP9B9pU';
 const LS = { apiKey: 'ev_api_key', playlistId: 'ev_playlist_id', history: 'ev_history_v1', auto: 'ev_auto' };
 const ALBUM_KEY = '__album__';
 
@@ -276,7 +277,7 @@ let refreshTimer = null;
 
 function loadState() {
   return {
-    apiKey: localStorage.getItem(LS.apiKey) || '',
+    apiKey: localStorage.getItem(LS.apiKey) || DEFAULT_API_KEY,
     playlistId: localStorage.getItem(LS.playlistId) || DEFAULT_PLAYLIST,
     history: readHistory(),
     auto: localStorage.getItem(LS.auto) === '1'
