@@ -115,27 +115,6 @@
   .banner.info { background: rgba(230, 195, 92, .08); border-color: rgba(230, 195, 92, .4); color: var(--gold); }
   .hidden { display: none !important; }
 
-  details { margin-bottom: 18px; }
-  summary {
-    cursor: pointer; font-weight: 600; padding: 12px 18px;
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-    font-size: 15px;
-  }
-  details[open] summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-  .details-body {
-    background: var(--card); border: 1px solid var(--border); border-top: none;
-    border-radius: 0 0 12px 12px; padding: 16px 18px;
-  }
-  .field { margin-bottom: 12px; }
-  .field label { display: block; color: var(--muted); font-size: 13px; margin-bottom: 5px; }
-  .field input { width: 100%; max-width: 480px; }
-  .hint { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
-  .hint code { background: var(--card-2); padding: 1px 6px; border-radius: 5px; font-size: 12px; }
-  ol.steps { padding-inline-start: 20px; color: var(--text); font-size: 14px; margin: 0 0 10px; }
-  ol.steps li { margin-bottom: 6px; }
-  ol.steps a { color: var(--gold); }
-  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
-
   footer { color: var(--muted); font-size: 12.5px; text-align: center; margin-top: 32px; }
 
   @media (max-width: 640px) {
@@ -225,52 +204,6 @@
     </div>
   </div>
 
-  <details id="setup">
-    <summary data-i18n="settingsTitle">⚙️ Settings &amp; API key</summary>
-    <div class="details-body">
-      <div class="field">
-        <label for="inp-key" data-i18n="lblKey">YouTube Data API v3 key</label>
-        <input type="password" id="inp-key" placeholder="AIza..." autocomplete="off">
-        <p class="hint" data-i18n="hintKeyStorage">The key is stored only in your browser (localStorage) and is only sent to Google.</p>
-      </div>
-      <div class="field">
-        <label for="inp-pid" data-i18n="lblPlaylist">YouTube playlist ID</label>
-        <input type="text" id="inp-pid" placeholder="PLF4sfoMSIp_4" autocomplete="off">
-      </div>
-      <div class="btn-row">
-        <button id="btn-save" class="primary" type="button" data-i18n="saveLoad">Save &amp; load</button>
-        <button id="btn-clear" class="danger" type="button" data-i18n="clearHistory">Clear history</button>
-      </div>
-      <p class="hint" data-i18n="hintQuota">Each refresh uses ~3 units of the free quota (10,000 units/day).</p>
-    </div>
-  </details>
-
-  <details id="help">
-    <summary data-i18n="helpTitle">❓ How to get a YouTube API key (free, ~5 min)</summary>
-    <div class="details-body">
-      <div class="only-en">
-        <ol class="steps">
-          <li>Open <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a> and sign in with your Google account.</li>
-          <li>At the top, click the project selector → <strong>New project</strong> → name it (e.g. <code>elissar-views</code>) → <strong>Create</strong>.</li>
-          <li>☰ Menu → <strong>APIs &amp; Services</strong> → <strong>Library</strong> → search for <strong>“YouTube Data API v3”</strong> → click <strong>Enable</strong>.</li>
-          <li><strong>APIs &amp; Services</strong> → <strong>Credentials</strong> → <strong>Create credentials</strong> → <strong>API key</strong>.</li>
-          <li>Copy the key (starts with <code>AIza</code>), paste it in “Settings” above → <strong>Save &amp; load</strong>.</li>
-        </ol>
-        <p class="hint">It's free: 10,000 quota units per day, i.e. ~3,000 refreshes. If you host the site somewhere, restrict the key (Credentials → your key → Website restrictions) to your domain.</p>
-      </div>
-      <div class="only-ar" dir="rtl" lang="ar">
-        <ol class="steps">
-          <li>افتح <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a> وسجّل الدخول بحساب Google.</li>
-          <li>من أعلى الصفحة: محدّد المشروع ← <strong>مشروع جديد</strong> ← أعطِه اسمًا (مثل <code>elissar-views</code>) ← <strong>إنشاء</strong>.</li>
-          <li>القائمة ☰ ← <strong>واجهات API والخدمات</strong> ← <strong>المكتبة</strong> ← ابحث عن <strong>« YouTube Data API v3 »</strong> ← اضغط <strong>تمكين</strong>.</li>
-          <li><strong>واجهات API والخدمات</strong> ← <strong>بيانات الاعتماد</strong> ← <strong>إنشاء بيانات اعتماد</strong> ← <strong>مفتاح API</strong>.</li>
-          <li>انسخ المفتاح (يبدأ بـ <code>AIza</code>) والصقه في «الإعدادات» أعلاه ← <strong>حفظ وتحميل</strong>.</li>
-        </ol>
-        <p class="hint">الخدمة مجانية: 10,000 وحدة حصة يوميًا (~3,000 تحديث). إذا استضفت الموقع بنفسك، قيّد المفتاح (بيانات الاعتماد ← مفتاحك ← قيود المواقع الإلكترونية) على نطاقك.</p>
-      </div>
-    </div>
-  </details>
-
   <footer data-i18n="footerText">Data from the YouTube Data API v3 · History stored locally in your browser (last 365 days).</footer>
 </div>
 
@@ -316,18 +249,7 @@ const I18N = {
     thViews: 'Views',
     thViewsToday: 'Views today',
     emptyTable: 'No data \u2014 click \u201cRefresh\u201d to load the tracks.',
-    settingsTitle: '\u2699\ufe0f Settings & API key',
-    lblKey: 'YouTube Data API v3 key',
-    hintKeyStorage: 'The key is stored only in your browser (localStorage) and is only sent to Google.',
-    lblPlaylist: 'YouTube playlist ID',
-    saveLoad: 'Save & load',
-    clearHistory: 'Clear history',
-    hintQuota: 'Each refresh uses ~3 units of the free quota (10,000 units/day).',
-    helpTitle: '\u2753 How to get a YouTube API key (free, ~5 min)',
-    footerText: 'Data from the YouTube Data API v3 \u00b7 History stored locally in your browser (last 365 days).',
-    confirmClear: 'Clear all the view history stored in this browser?',
-    welcomeMsg: 'Welcome! To track the album\u2019s views you need a free YouTube API key \u2014 follow the \u201c\u2753 How to get an API key\u201d guide below.',
-    noKeyMsg: 'Enter your YouTube API key in \u201c\u2699\ufe0f Settings & API key\u201d below to get started.',
+    footerText: 'Data from the YouTube Data API v3 · History stored locally in your browser (last 365 days).',
     errQuota: 'API quota exceeded for today (10,000 units/day). Try again tomorrow.',
     errPlaylist: 'Playlist not found. Check the playlist ID in the settings.',
     errKey: 'Invalid API key. Check the key in the settings.',
@@ -368,18 +290,7 @@ const I18N = {
     thViews: 'المشاهدات',
     thViewsToday: 'مشاهدات اليوم',
     emptyTable: 'لا توجد بيانات — اضغط «تحديث» لتحميل الأغاني.',
-    settingsTitle: '\u2699\ufe0f الإعدادات ومفتاح API',
-    lblKey: 'مفتاح YouTube Data API v3',
-    hintKeyStorage: 'يُحفظ المفتاح في متصفحك فقط (localStorage) ويُرسَل إلى Google فقط.',
-    lblPlaylist: 'معرّف قائمة التشغيل على يوتيوب',
-    saveLoad: 'حفظ وتحميل',
-    clearHistory: 'مسح السجل',
-    hintQuota: 'يستهلك كل تحديث ~3 وحدات من الحصة المجانية (10,000 وحدة/يوم).',
-    helpTitle: '\u2753 كيفية الحصول على مفتاح API لليوتيوب (مجانًا، ~5 دقائق)',
     footerText: 'البيانات مقدَّمة من YouTube Data API v3 · السجل محفوظ محليًا في متصفحك (آخر 365 يومًا).',
-    confirmClear: 'هل تريد مسح كل سجل المشاهدات المحفوظ في هذا المتصفح؟',
-    welcomeMsg: 'مرحبًا! لمتابعة مشاهدات الألبوم تحتاج إلى مفتاح API مجاني — اتبع الدليل « \u2753 كيفية الحصول على مفتاح API » أدناه.',
-    noKeyMsg: 'أدخل مفتاح API في «\u2699\ufe0f الإعدادات ومفتاح API» أدناه للبدء.',
     errQuota: 'تم تجاوز حصة API اليومية (10,000 وحدة/يوم). أعد المحاولة غدًا.',
     errPlaylist: 'قائمة التشغيل غير موجودة. تحقق من المعرّف في الإعدادات.',
     errKey: 'مفتاح API غير صالح. تحقق من المفتاح في الإعدادات.',
@@ -555,10 +466,6 @@ async function apiFetch(path, params) {
 /* ---------- récupération ---------- */
 
 async function fetchAll() {
-  if (!state.apiKey) {
-    showBanner('info', 'noKeyMsg');
-    return;
-  }
   setLoading(true);
   hideBanner();
   try {
@@ -655,8 +562,6 @@ function renderHeader() {
     $('#album-title').textContent = t('albumFallback');
   }
   $('#playlist-link').href = 'https://www.youtube.com/playlist?list=' + encodeURIComponent(state.playlistId);
-  $('#inp-pid').value = state.playlistId;
-  $('#inp-key').value = state.apiKey;
 }
 
 function deltaFor(key) {
@@ -878,40 +783,13 @@ $('#sel-song').addEventListener('change', (e) => {
   renderChart();
 });
 
-$('#btn-save').addEventListener('click', () => {
-  const k = $('#inp-key').value.trim();
-  const p = $('#inp-pid').value.trim() || DEFAULT_PLAYLIST;
-  state.apiKey = k;
-  state.playlistId = p;
-  if (k) localStorage.setItem(LS.apiKey, k); else localStorage.removeItem(LS.apiKey);
-  localStorage.setItem(LS.playlistId, p);
-  albumMeta = null;
-  fetchAll();
-});
-
-$('#btn-clear').addEventListener('click', () => {
-  if (!window.confirm(t('confirmClear'))) return;
-  state.history = { daily: {} };
-  saveHistory();
-  renderTable();
-  renderChart();
-  $('#stat-total-delta').textContent = t('noHistory');
-});
-
 /* ---------- init ---------- */
 
 (function init() {
   applyLang();
-  $('#inp-key').value = state.apiKey;
-  $('#inp-pid').value = state.playlistId;
   $('#chk-auto').checked = state.auto;
   setAuto(state.auto);
-  if (state.apiKey) {
-    fetchAll();
-  } else {
-    showBanner('info', 'welcomeMsg');
-    $('#help').open = true;
-  }
+  fetchAll();
 })();
 </script>
 </body>
